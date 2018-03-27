@@ -1,0 +1,5 @@
+OrderNumber,CustomerName,State,TaxRate,ProductType,Area,CostPerSquareFoot,LaborCostPerSquareFoot,MaterialCost,LaborCost,Tax,Total
+3|Bobby Brown|PA|6.75|Laminate|200|1.75|2.10|350.00|420.00|51.975000|821.975000
+2|Tammy Tampson|PA|6.75|Wood|500|5.15|4.75|2575.00|2375.00|334.125000|5284.125000
+4|George Lucas|OH|6.25|Wood|1000|5.15|4.75|5150.00|4750.00|618.750000|10518.750000
+5|Oren Overwrite|OH|6.25|Carpet|100.5|2.25|2.25|226.125|226.125|28.2656250|480.5156250

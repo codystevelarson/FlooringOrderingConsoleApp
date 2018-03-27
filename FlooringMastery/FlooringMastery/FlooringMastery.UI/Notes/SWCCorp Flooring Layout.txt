@@ -1,0 +1,60 @@
+﻿SWC Corp. Flooring Layout
+
+BLL:
+	- OrderManager = Executes List, Add, Edit, Delete method and returns a response
+		- AddOrder()
+		- EditOrder()
+		- DeleteOrder()
+		- ListOrder()
+	- OrderManagerFactory
+		- Returns an OrderRepository IRepository 
+	 
+
+DATA:
+	- Order Repositories
+	- Tax Repository
+	- Product Repository
+
+
+UI:
+	- Program
+		- Runs the program by invoking MainMenu.Start()
+	- MainMenu
+		- Displays Main Menu
+		- Anchor of the app
+		- Takes user input to run Workflows.Execute()
+	- ConoleIO
+		- Input validation
+		- Output Display formatting
+	- Workflows
+		- DisplayOrdersWorkflow
+		- AddOrderWorkflow
+		- EditOrderWorkflow
+		- RemoveOrderWorkflow
+	
+
+MODELS:
+	- Order Class:
+		- Hold all order information
+	- Settings:
+		- Hold filePath info 
+	- Interfaces:
+		- IOrderRepository
+				- List()
+				- Add()
+				- Edit()
+				- Delete()
+		- ITax
+				-Info Properties
+		- IProduct
+				-Info Properties
+			
+		
+	- Responses 
+		Base: Contains bool Succsess & string Message
+		- AddOrderResponse			= Returns an Order
+		- EditOrderResponse			= Returns an Order
+		- RemoveOrderResponse		= Returns an Order
+		- DisplayOrdersResponse		= Returns a List<Order>
+		
+

@@ -1,0 +1,148 @@
+﻿Mastery Project:
+SWC Corp. Flooring Project:
+----------------------------------------------------------------------------
+
+Must Haves:
+- app.Config		
+			- appSettings key to set the mode to "Test" or "Prod"
+			- Test should provide sample data and allow reading order info from the console user
+			- Test data should not be saved in between runs
+			- Prod mode should read and write order information from a file
+--------------------------------------------------------------------------------------------------------------------
+- Data Repositories	
+			- Each type of data repository should implement interfaces
+			- Use factory classes to select implementations
+
+-Orders File	
+		- A new order file is created for each sales day.
+		- The filename should be formated: Orders_MMDDYYYY.txt
+		- Order Header row contains the following:
+			- OrderNumber =================== int
+			- CustomerName ================== string
+			- State ========================= string
+			- TaxRate ======================= decimal
+			- ProductType =================== string
+			- Area ========================== decimal
+			- CostPerSquareFoot ============= decimal
+			- LaborCostPerSquareFoot ======== decimal
+			- MaterialCost ================== decimal (Area * CostPerSquareFoot)
+			- LaborCost ===================== decimal (Area * LaborCostPerSquareFoot)
+			- Tax =========================== decimal ((MaterialCost + LaborCost) * (TaxRate/100)) Tax rates are stored as whole numbers
+			- Total ========================= decimal (MaterialCost + LaborCost + Tax)
+			-Sample: 1,Wise,OH,6.25,Wood,100.00,5.15,4.75,515.00,475.00,61.88,1051.88
+
+-Tax File	
+		- Stores taxinformation in a txt file
+		- Contains the following:
+			- StateAbbreviation ============= string
+			- StateName ===================== string
+			- TaxRate ======================= decimal
+			-Sample: OH,Ohio,6.25
+-Product File 	
+		- Stores product information in a txt file
+		- Contains the following:
+			- ProductType =================== string
+			- CostPerSquareFoot ============= decimal
+			- LaborCostPerSquareFoot ======== decimal
+			-Sample: Tile,3.50,4.15
+--------------------------------------------------------------------------------------------------------------------
+
+Project Layers:
+
+.UI 	
+	- Create a menu for to prompt user for input
+	- Get and validate user input
+	- Query user for each piece of order data necessary
+		
+---------------------------------------------------------				
+	-Menu wireframe-
+
+	Flooring Program
+	****************
+	1. Display Orders
+	2. Add an Order
+	3. Edit an Order
+	4. Remove an Order
+	
+	Q - Quit
+---------------------------------------------------------
+
+	- Add an Order:
+		- Order Date	= Must be in the future
+		- Customer Name = May not be blank, Can contain [A-z][0-9] and puctuation (create method to keep commas in name)
+		- State			= Entered States must be checked against tax file.
+						If state does not exist in tax file we cannot sell there.
+						If a state is added to the tax file we can sell to it without changing application code.
+		- ProductType 	= Show a list of available Products and Pricing info 
+						If a product is added to the file it should show up in the application without a code change.
+		- Area			= The area mus be a positive decimal
+						Minimum order size is 100sq ft
+		- REMAINING FIELDS
+			- Calculated by the user entry and the tax/product info in the data files.
+		- Print a summary of the order once the calculations are completed 
+		- Prompt the user Y/N to place order
+			- Y = Data is written to the orders file
+			- N = Return to main menu
+		- SYSTEM WILL GENERATE AN ORDER NUMBER
+			- Based on the next available order # in the file
+			- Get max order number in file and add 1
+
+	-Edit an Order:
+		- Query the user for a data and order number. 
+		- If order exists in the file for that date it will:
+			- Query user for each piece of the order data
+			- Display current data in the prompt
+			- If the user enters something new it will replace that data
+			- If they hit enter without entering anything the data will be unchanged
+			-Sample: Enter customer name (Wise):
+				- if new name is entered Wise will be changed to the new name
+				- if nothing is entered Wise will remain unchanged
+		- EDITABLE ORDER DATA:
+			- CustomerName
+			- State (Order will need to be recalculated)
+			- ProductType (Order will need to be recalculated)
+			- Area
+		- OrderDate CANNOT be changed
+		- Display Summary of new order info
+		- Prompt user with Y/N to save changes
+			- Y = replace data in the file, return to MM
+			- N = do not save and return to MM 
+
+---------------------------------------------------------
+	-Display Orders wireframe-
+
+	[OrderNumber] - [OrderDate]
+	[CustomerName]
+	[State]
+	Product: [ProductType]
+	Materials: [MeterialCost]
+	Labor: [LaborCost]
+	Tax: [Tax]
+	Total: [Total]
+---------------------------------------------------------
+	
+	- Remove an Order:
+		- System should ask for date and order number
+		- If it exists, Display the order info
+		- Prompt user for Y/N to remove order
+			- Y = Remove from the file
+			- N = Return to MM
+--------------------------------------------------------------------------------------------------------------------
+
+::Additional Notes::
+
+- Anytime user enters invalid data, the system should ask them again until they enter valid data
+	- User should not be able to crash program with invalid data
+
+- USE LAYERES
+	- Organize code into classes and split into the following layers:
+		-UI
+		-Data - MUST TEST
+		-Models
+		-BLL - MUST TEST
+
+- Submit project plan with code.
+	- Flowcharts
+	- Outlines
+	- Pseudocode
+	- Or any other documentation and planning technique

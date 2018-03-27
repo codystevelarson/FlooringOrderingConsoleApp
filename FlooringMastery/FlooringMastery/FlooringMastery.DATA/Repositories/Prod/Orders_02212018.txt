@@ -1,0 +1,4 @@
+OrderNumber,CustomerName,State,TaxRate,ProductType,Area,CostPerSquareFoot,LaborCostPerSquareFoot,MaterialCost,LaborCost,Tax,Total
+2|ABC Corp.|PA|6.75|Cork|1234|7.45|6.55|9193.30|8082.70|1166.130000|18442.130000
+3|XYZ LLC.|IN|6.00|Tile|2345|3.50|4.15|8207.50|9731.75|1076.3550|19015.6050
+4|MMM|MN|7.5|Wood|765|5.15|4.75|3939.75|3633.75|568.01250|8141.51250

@@ -1,0 +1,2 @@
+OrderNumber,CustomerName,State,TaxRate,ProductType,Area,CostPerSquareFoot,LaborCostPerSquareFoot,MaterialCost,LaborCost,Tax,Total
+1|Cody|IN|6.00|Tile|1200|3.50|4.15|4200.00|4980.00|550.8000|9730.8000
