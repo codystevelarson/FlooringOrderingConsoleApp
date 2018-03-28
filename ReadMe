@@ -1,0 +1,5 @@
+::Flooring Mastery::
+
+A C# console CRUD app to order flooring and manage orders.
+
+- Created a CRUD system using UI console method, response logic patterns with a delimited text file and in-memory data repositories.
